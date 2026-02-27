@@ -1,0 +1,18 @@
+﻿@model MoviesApp.Models.Movie
+
+@{
+    ViewData["Title"] = "Movie Details";
+}
+
+<div class="card text-center w-50 m-auto">
+    <h4 class="card-title">@Model.Title</h4>
+
+    <img src="/image/@Model.ImgUrl" class="card-img" alt="@Model.Title" />
+
+    <div class="card-body">
+        <p class="bg-black text-white p-3 fw-bolder card-text">Genre: @Model.Genre</p>
+        <p class="card-text bg-warning p-3 fw-bold text-primary">Release Year: @Model.ReleaseYear</p>
+
+        <a asp-action="Index" class="btn btn-primary">Back to List</a>
+    </div>
+</div>
