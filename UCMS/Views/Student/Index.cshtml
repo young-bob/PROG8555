@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "My Profile";
+}
+<h1>Student Profile</h1>
+<hr />
+
+<div class="card mb-4" style="max-width: 500px;">
+    <div class="card-body">
+        <h5 class="card-title">Yang Bo</h5>
+        <p class="card-text"><strong>Student ID:</strong> 8901234</p>
+        <p class="card-text"><strong>Program:</strong> Software Engineering Technology</p>
+        <p class="card-text"><strong>Semester:</strong> Winter 2026</p>
+        <p class="card-text"><strong>GPA:</strong> 3.72</p>
+    </div>
+</div>
+
+<h3>Enrolled Courses</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Course Name</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>PROG8555</td>
+            <td>Microsoft Web Technologies</td>
+            <td><span class="badge bg-success">Active</span></td>
+        </tr>
+        <tr>
+            <td>PROG8170</td>
+            <td>Cloud Computing</td>
+            <td><span class="badge bg-success">Active</span></td>
+        </tr>
+        <tr>
+            <td>PROG8850</td>
+            <td>Mobile Application Development</td>
+            <td><span class="badge bg-warning text-dark">Waitlisted</span></td>
+        </tr>
+    </tbody>
+</table>
+
+<a asp-action="Registration" class="btn btn-primary">Register for More Courses</a>

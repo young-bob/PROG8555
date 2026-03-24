@@ -1,0 +1,51 @@
+@{
+    ViewData["Title"] = "Course Registration";
+}
+<h1>Course Registration</h1>
+<p>Select the courses you would like to enroll in for the upcoming semester.</p>
+<hr />
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Select</th>
+            <th>Code</th>
+            <th>Course Name</th>
+            <th>Instructor</th>
+            <th>Seats Left</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="checkbox" /></td>
+            <td>INFO8145</td>
+            <td>Database Administration</td>
+            <td>Prof. Garcia</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" /></td>
+            <td>SENG8071</td>
+            <td>Software Quality Assurance</td>
+            <td>Dr. Patel</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" /></td>
+            <td>PROG8860</td>
+            <td>DevOps and Deployment</td>
+            <td>Prof. Wilson</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox" checked disabled /></td>
+            <td>PROG8555</td>
+            <td>Microsoft Web Technologies</td>
+            <td>Dr. Smith</td>
+            <td><span class="text-muted">Already enrolled</span></td>
+        </tr>
+    </tbody>
+</table>
+
+<button type="button" class="btn btn-success">Submit Registration</button>
+<a asp-action="Index" class="btn btn-secondary ms-2">Back to My Profile</a>

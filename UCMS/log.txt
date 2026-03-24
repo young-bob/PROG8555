@@ -1,0 +1,42 @@
+[2026-03-24 00:21:48] [Information] Now listening on: http://localhost:5001
+[2026-03-24 00:21:48] [Information] Application started. Press Ctrl+C to shut down.
+[2026-03-24 00:21:48] [Information] Hosting environment: Development
+[2026-03-24 00:21:48] [Information] Content root path: /Users/yangbo/Conestoga/PROG8555 - Microsoft Web Technologies/Assignment3/Code/UCMS
+[2026-03-24 00:21:52] [Warning] Failed to determine the https port for redirect.
+[2026-03-24 00:21:52] [Information] Rendering view...
+[2026-03-24 00:21:52] [Information] View rendered at 12:21:52 AM
+[2026-03-24 00:21:55] [Information] >> Action started: Course/Index by [Guest] at 2026-03-24 00:21:55
+[2026-03-24 00:21:55] [Information] << Action finished in 0.8ms (success=True)
+[2026-03-24 00:21:55] [Information] Rendering view...
+[2026-03-24 00:21:55] [Information] View rendered at 12:21:55 AM
+[2026-03-24 00:22:06] [Information] >> Action started: Course/Details by [Guest] at 2026-03-24 00:22:06
+[2026-03-24 00:22:06] [Information] << Action finished in 0.6ms (success=True)
+[2026-03-24 00:22:06] [Information] Rendering view...
+[2026-03-24 00:22:06] [Information] View rendered at 12:22:06 AM
+[2026-03-24 00:22:12] [Information] >> Action started: Course/Index by [Guest] at 2026-03-24 00:22:12
+[2026-03-24 00:22:12] [Information] << Action finished in 0.9ms (success=True)
+[2026-03-24 00:22:12] [Information] Rendering view...
+[2026-03-24 00:22:12] [Information] View rendered at 12:22:12 AM
+[2026-03-24 00:22:14] [Information] Rendering view...
+[2026-03-24 00:22:14] [Information] View rendered at 12:22:14 AM
+[2026-03-24 00:22:33] [Information] Rendering view...
+[2026-03-24 00:22:33] [Information] View rendered at 12:22:33 AM
+[2026-03-24 00:22:43] [Information] Rendering view...
+[2026-03-24 00:22:43] [Information] View rendered at 12:22:43 AM
+[2026-03-24 00:22:46] [Error] Unhandled error caught by filter
+System.Exception: This is a simulated exception to test the Exception Filter.
+   at UCMS.Controllers.HomeController.ThrowError() in /Users/yangbo/Conestoga/PROG8555 - Microsoft Web Technologies/Assignment3/Code/UCMS/Controllers/HomeController.cs:line 27
+   at lambda_method46(Closure, Object, Object[])
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|26_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+[2026-03-24 00:22:46] [Information] Rendering view...
+[2026-03-24 00:22:46] [Information] View rendered at 12:22:46 AM
+[2026-03-24 00:30:03] [Information] Application is shutting down...

@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center mb-4">
+    <h1 class="display-4">University Course Management System</h1>
+    <p class="lead">Welcome to UCMS — manage courses, registrations, and student profiles all in one place.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Courses</h5>
+                <p class="card-text">Browse available courses for this semester, view schedules, and check enrollment status.</p>
+                <a asp-controller="Course" asp-action="Index" class="btn btn-primary">View Courses</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Student Profile</h5>
+                <p class="card-text">Check your student information, GPA, and currently enrolled courses.</p>
+                <a asp-controller="Student" asp-action="Index" class="btn btn-primary">My Profile</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Registration</h5>
+                <p class="card-text">Register for new courses or manage your current enrollments for upcoming semesters.</p>
+                <a asp-controller="Student" asp-action="Registration" class="btn btn-primary">Register Now</a>
+            </div>
+        </div>
+    </div>
+</div>
