@@ -1,18 +1,15 @@
-// TODO: Bo Yang
-// TODO: 9086117
-
 using MoviesApi.Models;
 
 namespace MoviesApi.Repositories
 {
     public interface IMovieRepository
     {
-        IEnumerable<Movie> GetAll();
-        int GetTotalCount();
-        IEnumerable<Movie> GetPaginated(int pageNumber, int pageSize);
-        Movie? GetById(int id);
-        void Add(Movie movie);
-        void Update(Movie movie);
-        void Delete(int id);
+        Task<IEnumerable<Movie>> GetAll();
+        Task<int> Count();
+        Task<IEnumerable<Movie>> GetPaginated(int pageNumber, int pageSize);
+        Task<Movie?> GetById(int id);
+        Task<Movie?> Add(Movie movie);
+        Task<Movie?> Update(Movie movie);
+        Task<Movie?> Delete(int id);
     }
 }

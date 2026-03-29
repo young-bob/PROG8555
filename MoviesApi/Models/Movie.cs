@@ -9,7 +9,8 @@ namespace MoviesApi.Models
         public int Id { get; set; }
 
         [Required]
-        [RegularExpression(@"^[A-Z].*", ErrorMessage = "Title must start with a capital letter")]
+        [RegularExpression(@"^[A-Z].*", 
+        ErrorMessage = "Title must start with a capital letter")]
         public string Title { get; set; } = string.Empty;
 
         [Required]
@@ -18,7 +19,8 @@ namespace MoviesApi.Models
         public string ReleaseYear { get; set; } = string.Empty;
 
         [Required]
-        [RegularExpression("^(Action|Comedy|Drama|Horror|SciFi)$", ErrorMessage = "Genre must be one of: Action, Comedy, Drama, Horror, SciFi")]
+        [RegularExpression("^(Action|Comedy|Drama|Horror|SciFi)$", 
+        ErrorMessage = "Genre must be one of: Action, Comedy, Drama, Horror, SciFi")]
         public string Genre { get; set; } = string.Empty;
 
         [Required]

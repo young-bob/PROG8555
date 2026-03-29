@@ -22,13 +22,25 @@ namespace MoviesApi.Controllers
         /// <param name="pageNumber">Page number to retrieve</param>
         /// <param name="pageSize">Number of items per page</param>
         [HttpGet]
-        public ActionResult<PagedResult<MovieReadDto>> GetMovies([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 5)
+        public async Task<ActionResult<PagedResult<MovieReadDto>>> GetMovies([FromQuery] int pageNumber = 1, 
+                                                                             [FromQuery] int pageSize = 5)
         {
-            int totalRecords = _repository.GetTotalCount();
+            int totalRecords = await _repository.Count();
             int totalPages = (int)Math.Ceiling(totalRecords / (double)pageSize);
 
-            var paginatedMovies = _repository.GetPaginated(pageNumber, pageSize)
-                .Select(m => new MovieReadDto
+            var result = new PagedResult<MovieReadDto>
+            { 
+                PageNumber = pageNumber, 
+                PageSize = pageSize, 
+                TotalPages = totalPages, 
+                TotalRecords = totalRecords
+            };
+
+            if(pageNumber > totalPages)
+                return Ok(result);
+
+            var movies = await _repository.GetPaginated(pageNumber, pageSize);
+            result.Data = movies.Select(m => new MovieReadDto
                 {
                     Id = m.Id,
                     Title = m.Title,
@@ -37,14 +49,7 @@ namespace MoviesApi.Controllers
                     ImgUrl = m.ImgUrl
                 });
 
-            return Ok(new PagedResult<MovieReadDto>
-            {
-                PageNumber = pageNumber,
-                PageSize = pageSize,
-                TotalRecords = totalRecords,
-                TotalPages = totalPages,
-                Data = paginatedMovies
-            });
+            return Ok(result);
         }
 
         /// <summary>
@@ -52,9 +57,9 @@ namespace MoviesApi.Controllers
         /// </summary>
         /// <param name="id">Movie Id</param>
         [HttpGet("{id}")]
-        public ActionResult<MovieReadDto> GetMovie(int id)
+        public async Task<ActionResult<MovieReadDto>> GetMovie(int id)
         {
-            var movie = _repository.GetById(id);
+            var movie = await _repository.GetById(id);
             if (movie == null)
             {
                 return NotFound();
@@ -75,7 +80,7 @@ namespace MoviesApi.Controllers
         /// </summary>
         /// <param name="createDto">Movie details</param>
         [HttpPost]
-        public ActionResult<MovieReadDto> CreateMovie(MovieCreateDto createDto)
+        public async Task<ActionResult<MovieReadDto>> CreateMovie(MovieCreateDto createDto)
         {
             var movie = new Movie
             {
@@ -85,18 +90,19 @@ namespace MoviesApi.Controllers
                 ImgUrl = createDto.ImgUrl
             };
 
-            _repository.Add(movie);
+            var created = await _repository.Add(movie);
+            if (created == null) return BadRequest();
 
             var readDto = new MovieReadDto
             {
-                Id = movie.Id,
-                Title = movie.Title,
-                ReleaseYear = movie.ReleaseYear,
-                Genre = movie.Genre,
-                ImgUrl = movie.ImgUrl
+                Id = created.Id,
+                Title = created.Title,
+                ReleaseYear = created.ReleaseYear,
+                Genre = created.Genre,
+                ImgUrl = created.ImgUrl
             };
 
-            return CreatedAtAction(nameof(GetMovie), new { id = movie.Id }, readDto);
+            return CreatedAtAction(nameof(GetMovie), new { id = created.Id }, readDto);
         }
 
         /// <summary>
@@ -105,20 +111,19 @@ namespace MoviesApi.Controllers
         /// <param name="id">Movie Id to update</param>
         /// <param name="updateDto">New movie details</param>
         [HttpPut("{id}")]
-        public IActionResult UpdateMovie(int id, MovieUpdateDto updateDto)
+        public async Task<IActionResult> UpdateMovie(int id, MovieUpdateDto updateDto)
         {
-            var existingMovie = _repository.GetById(id);
-            if (existingMovie == null)
+            var movie = new Movie
             {
-                return NotFound();
-            }
+                Id = id,
+                Title = updateDto.Title,
+                ReleaseYear = updateDto.ReleaseYear,
+                Genre = updateDto.Genre,
+                ImgUrl = updateDto.ImgUrl
+            };
 
-            existingMovie.Title = updateDto.Title;
-            existingMovie.ReleaseYear = updateDto.ReleaseYear;
-            existingMovie.Genre = updateDto.Genre;
-            existingMovie.ImgUrl = updateDto.ImgUrl;
-
-            _repository.Update(existingMovie);
+            var updated = await _repository.Update(movie);
+            if (updated == null) return NotFound();
 
             return NoContent();
         }
@@ -128,15 +133,10 @@ namespace MoviesApi.Controllers
         /// </summary>
         /// <param name="id">Movie Id to delete</param>
         [HttpDelete("{id}")]
-        public IActionResult DeleteMovie(int id)
+        public async Task<IActionResult> DeleteMovie(int id)
         {
-            var existingMovie = _repository.GetById(id);
-            if (existingMovie == null)
-            {
-                return NotFound();
-            }
-
-            _repository.Delete(id);
+            var deleted = await _repository.Delete(id);
+            if (deleted == null) return NotFound();
 
             return NoContent();
         }

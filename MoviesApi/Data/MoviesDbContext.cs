@@ -1,6 +1,3 @@
-// TODO: Bo Yang
-// TODO: 9086117
-
 using Microsoft.EntityFrameworkCore;
 using MoviesApi.Models;
 
