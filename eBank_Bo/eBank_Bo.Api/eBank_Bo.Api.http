@@ -1,0 +1,6 @@
+@eBank_Bo.Api_HostAddress = http://localhost:5177
+
+GET {{eBank_Bo.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

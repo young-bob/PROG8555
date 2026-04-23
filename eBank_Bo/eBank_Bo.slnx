@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="eBank_Bo.Api/eBank_Bo.Api.csproj" />
+  <Project Path="eBank_Bo.Data/eBank_Bo.Data.csproj" />
+  <Project Path="eBank_Bo.Web/eBank_Bo.Web.csproj" />
+</Solution>

@@ -1,0 +1,35 @@
+@model IEnumerable<eBank_Bo.Data.Models.Account>
+@{
+    ViewData["Title"] = "Accounts";
+}
+
+<h2>Your Accounts</h2>
+
+<table class="table table-striped table-hover mt-3">
+    <thead>
+        <tr>
+            <th>Account Number</th>
+            <th>Type</th>
+            <th>Customer</th>
+            <th>Balance</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.AccountNumber</td>
+                <td>@item.AccountType</td>
+                <td>@item.Customer?.FirstName @item.Customer?.LastName</td>
+                <td>@item.Balance.ToString("C")</td>
+                <td>
+                    <a asp-controller="Account" asp-action="Details" asp-route-id="@item.AccountId" class="btn btn-sm btn-info">Details</a>
+                    <a asp-controller="Transaction" asp-action="Deposit" asp-route-accountId="@item.AccountId" class="btn btn-sm btn-success">Deposit</a>
+                    <a asp-controller="Transaction" asp-action="Withdraw" asp-route-accountId="@item.AccountId" class="btn btn-sm btn-warning">Withdraw</a>
+                    <a asp-controller="Transaction" asp-action="History" asp-route-accountId="@item.AccountId" class="btn btn-sm btn-secondary">History</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

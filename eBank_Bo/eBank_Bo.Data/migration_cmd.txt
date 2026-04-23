@@ -1,0 +1,6 @@
+# Migration for SQLite
+
+dotnet ef migrations add InitialCreate --startup-project ../eBank_Bo.Api
+
+dotnet ef database update --startup-project ../eBank_Bo.Api
+dotnet ef database update --startup-project ../eBank_Bo.Web
